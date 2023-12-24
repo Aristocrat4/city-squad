@@ -1,0 +1,29 @@
+.hero {
+  .hero-wrapper {
+    height: 862px;
+    background-size: cover;
+    background-image: url("../../../assets/images/hero.png");
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      height: 100%;
+      background: rgba(0, 0, 62, 0.58);
+      h1 {
+        font-weight: 500;
+        font-size: 68px;
+        color: white;
+      }
+      p {
+        max-width: 80%;
+        font-weight: 500;
+        font-size: 32px;
+        text-align: center;
+        color: white;
+        line-height: 45px;
+      }
+    }
+  }
+}
