@@ -8,6 +8,7 @@ import { GetPriceButtonComponent } from './shared/components/get-price-button/ge
 import { HeroComponent } from './components/hero/hero.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ServicesToOfferComponent } from './components/services-to-offer/services-to-offer.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,11 @@ import { FooterComponent } from './components/footer/footer.component';
     GetPriceButtonComponent,
     HeroComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    ServicesToOfferComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
