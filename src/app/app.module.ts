@@ -9,6 +9,7 @@ import { HeroComponent } from './components/hero/hero.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ServicesToOfferComponent } from './components/services-to-offer/services-to-offer.component';
+import { WhyChooseUsComponent } from './components/why-choose-us/why-choose-us.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ServicesToOfferComponent } from './components/services-to-offer/service
     HomeComponent,
     FooterComponent,
     ServicesToOfferComponent,
+    WhyChooseUsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
