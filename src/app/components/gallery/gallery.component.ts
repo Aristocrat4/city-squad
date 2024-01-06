@@ -1,0 +1,20 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-gallery',
+  templateUrl: './gallery.component.html',
+  styleUrls: ['./gallery.component.scss'],
+})
+export class GalleryComponent {
+  gallery = [
+    {
+      img: 'tv.jpg',
+      hover:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore etLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. ',
+    },
+    { img: 'tv.jpg', hover: '2' },
+    { img: 'tv.jpg', hover: '3' },
+    { img: 'tv.jpg', hover: '4' },
+  ];
+  nextImage() {}
+}

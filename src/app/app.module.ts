@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ServicesToOfferComponent } from './components/services-to-offer/services-to-offer.component';
 import { WhyChooseUsComponent } from './components/why-choose-us/why-choose-us.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { NgbModule, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,8 +23,9 @@ import { WhyChooseUsComponent } from './components/why-choose-us/why-choose-us.c
     FooterComponent,
     ServicesToOfferComponent,
     WhyChooseUsComponent,
+    GalleryComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, NgbCarouselModule],
   providers: [],
   bootstrap: [AppComponent],
 })

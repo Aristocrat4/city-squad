@@ -1,0 +1,41 @@
+<section class="gallery">
+  <div class="gallery-wrapper container">
+    <div class="gallery-left">
+      <h3>Our latest work</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A optio modi
+        amet error dolores eveniet magni ea maxime ex esse accusantium nulla
+        saepe dolorem, quo iste architecto voluptate officia quod. Possimus
+        commodi tempora recusandae ea aperiam, quis assumenda vel corrupti et
+        veritatis accusamus? Perspiciatis quaerat ipsa numquam pariatur voluptas
+        quam neque, suscipit quibusdam accusantium voluptates nam harum
+        repellendus consequuntur eveniet.
+      </p>
+      <div class="buttons">
+        <div class="arrow left-arrow">
+          <img src="../../../assets/images/left.svg" alt="left arrow" />
+        </div>
+        <div class="arrow right-arrow">
+          <img src="../../../assets/images/right.svg" alt="right arrow" />
+        </div>
+      </div>
+    </div>
+    <div class="gallery-right">
+      <!-- <div *ngFor="let item of gallery" class="card">
+        <div class="description">
+          <p>
+            {{ item.hover }}
+          </p>
+        </div>
+      </div> -->
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let item of gallery">
+          <div class="carousel-wrapper">
+            <img src="../../../assets/images/{{ item.img }}" alt="img" />
+            <div class="caption">{{ item.hover }}</div>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+  </div>
+</section>
