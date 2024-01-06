@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-gallery',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./gallery.component.scss'],
 })
 export class GalleryComponent {
+  @ViewChild('scroll') scroll!: ElementRef;
   gallery = [
     {
       img: 'tv.jpg',
@@ -16,5 +17,13 @@ export class GalleryComponent {
     { img: 'tv.jpg', hover: '3' },
     { img: 'tv.jpg', hover: '4' },
   ];
-  nextImage() {}
+  next() {
+    const wrapper: HTMLElement = this.scroll.nativeElement;
+    wrapper.scrollBy({ left: 300, top: 0, behavior: 'smooth' });
+    console.log(this.scroll.nativeElement);
+  }
+  prev() {
+    const wrapper: HTMLElement = this.scroll.nativeElement;
+    wrapper.scrollBy({ left: -300, top: 0, behavior: 'smooth' });
+  }
 }

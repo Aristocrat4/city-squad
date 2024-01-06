@@ -12,6 +12,13 @@ import { ServicesToOfferComponent } from './components/services-to-offer/service
 import { WhyChooseUsComponent } from './components/why-choose-us/why-choose-us.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { NgbModule, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarouselModule } from 'primeng/carousel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonModule } from 'primeng/button';
+import { TagModule } from 'primeng/tag';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { ProductService } from './service/productservice.service';
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +32,19 @@ import { NgbModule, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
     WhyChooseUsComponent,
     GalleryComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, NgbCarouselModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    NgbCarouselModule,
+    CarouselModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    TagModule,
+    CarouselComponent,
+    TestimonialsComponent,
+  ],
+  providers: [ProductService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -12,30 +12,22 @@
         repellendus consequuntur eveniet.
       </p>
       <div class="buttons">
-        <div class="arrow left-arrow">
+        <div class="arrow left-arrow" (click)="prev()" #prevBtn>
           <img src="../../../assets/images/left.svg" alt="left arrow" />
         </div>
-        <div class="arrow right-arrow">
+        <div class="arrow right-arrow" (click)="next()" #nextBtn>
           <img src="../../../assets/images/right.svg" alt="right arrow" />
         </div>
       </div>
     </div>
-    <div class="gallery-right">
-      <!-- <div *ngFor="let item of gallery" class="card">
+    <div class="gallery-right" #scroll>
+      <div *ngFor="let item of gallery" class="card">
         <div class="description">
           <p>
             {{ item.hover }}
           </p>
         </div>
-      </div> -->
-      <ngb-carousel>
-        <ng-template ngbSlide *ngFor="let item of gallery">
-          <div class="carousel-wrapper">
-            <img src="../../../assets/images/{{ item.img }}" alt="img" />
-            <div class="caption">{{ item.hover }}</div>
-          </div>
-        </ng-template>
-      </ngb-carousel>
+      </div>
     </div>
   </div>
 </section>
