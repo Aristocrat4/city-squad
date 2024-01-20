@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  onServices() {
+  onNavigation(scroll: number) {
     window.scroll({
-      top: 780,
+      top: scroll,
       left: 0,
       behavior: 'smooth',
     });

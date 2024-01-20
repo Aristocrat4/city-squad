@@ -12,10 +12,12 @@
       </div>
       <nav>
         <ul>
-          <li><a (click)="onServices()">Services</a></li>
-          <li><a href="#choose">Why Choose Us</a></li>
-          <li><a href="#work">Our Work</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a (click)="onNavigation(900)">Services</a></li>
+          <li><a (click)="onNavigation(1352)">Why Choose Us</a></li>
+          <li><a (click)="onNavigation(1911)">Our Work</a></li>
+          <li>
+            <a (click)="onNavigation(2576)">Testimonials</a>
+          </li>
           <li><app-get-price-button></app-get-price-button></li>
         </ul>
       </nav>
