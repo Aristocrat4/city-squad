@@ -156,5 +156,23 @@
   width: 97%;
   margin: 0 auto;
 }
-
+.checkbox {
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 1px solid rgba(160, 160, 160, 1);
+  .circle {
+    position: absolute;
+    top: 51%;
+    left: 51.7%;
+    transform: translate(-50%, -50%);
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: rgb(255, 255, 255);
+    // background: linear-gradient(90deg, #4ef0f8 0%, #44c8f8 41%, #388cfc 100%);
+  }
+}
+@import "~@ng-select/ng-select/themes/material.theme.css";
 /* Importing Bootstrap SCSS file. */

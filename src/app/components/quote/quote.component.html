@@ -1,0 +1,163 @@
+<section class="container">
+  <div class="price-page-wrapper">
+    <div class="left-forms-wrapper">
+      <div class="left-forms">
+        <form [formGroup]="tvForm">
+          <div class="form-title">
+            <div class="checkbox-title">
+              <div class="checkbox">
+                <div class="circle"></div>
+              </div>
+              <span>#1 TV</span>
+            </div>
+            <span class="edit">Edit</span>
+          </div>
+          <div *ngIf="true" class="labels">
+            <label>
+              Please select size of your TV
+              <select>
+                <option value="small" selected>small</option>
+                <option value="medium">medium</option>
+                <option value="big">big</option>
+              </select>
+            </label>
+            <label>
+              What type of mount do you want to purchase?
+              <select>
+                <option value="small" selected>small</option>
+                <option value="medium">medium</option>
+                <option value="big">big</option>
+              </select>
+            </label>
+            <label>
+              Where would you like to hide wires?
+              <select>
+                <option value="small" selected>small</option>
+                <option value="medium">medium</option>
+                <option value="big">big</option>
+              </select>
+            </label>
+            <label>
+              Would you like to mount sound-bar?
+              <select>
+                <option value="small" selected>small</option>
+                <option value="medium">medium</option>
+                <option value="big">big</option>
+              </select>
+            </label>
+            <label>
+              Would you like to mount TV shelves?
+              <select>
+                <option value="small" selected>small</option>
+                <option value="medium">medium</option>
+                <option value="big">big</option>
+              </select>
+            </label>
+            <label>
+              Would you like to mount electric fireplace?
+              <select>
+                <option value="small" selected>small</option>
+                <option value="medium">medium</option>
+                <option value="big">big</option>
+              </select>
+            </label>
+            <label>
+              Would you like to install LED lights on the back of the TV?
+              <select>
+                <option value="small" selected>small</option>
+                <option value="medium">medium</option>
+                <option value="big">big</option>
+              </select>
+            </label>
+            <label>
+              Choose a date of service
+              <select>
+                <option value="small" selected>small</option>
+                <option value="medium">medium</option>
+                <option value="big">big</option>
+              </select>
+            </label>
+            <label>
+              Comment
+              <textarea
+                name="comment"
+                id="comment"
+                cols="30"
+                rows="5"
+              ></textarea>
+            </label>
+          </div>
+        </form>
+        <div class="add-tv">
+          <div class="checkbox">
+            <div class="circle"></div>
+          </div>
+          <span>Add another TV</span>
+        </div>
+        <div class="disclaimer">
+          <p>
+            If you want to add more TVs you should call us (310) 343-675 and get
+            special price.
+          </p>
+        </div>
+        <form [formGroup]="tvForm">
+          <label>
+            Full Name
+            <input
+              type="text"
+              name="fullname"
+              id="fullname"
+              placeholder="Your Name"
+            />
+          </label>
+          <label>
+            Email
+            <input type="email" placeholder="email" name="email" id="email" />
+          </label>
+          <label>
+            Address
+            <input
+              type="text"
+              name="address"
+              id="address"
+              placeholder="address"
+            />
+          </label>
+          <label>
+            Apt/Suite Number
+            <input type="text" name="apt" id="apt" placeholder="Apt 101" />
+          </label>
+          <label>
+            Zip Code
+            <input type="text" name="zip" id="zip" placeholder="0000 000" />
+          </label>
+          <label>
+            Phone Number
+            <input type="text" name="phone" id="phone" />
+          </label>
+        </form>
+      </div>
+    </div>
+    <section class="right-calculation-wrapper">
+      <div class="fixed-right-content">
+        <h2>TV mounting</h2>
+        <h2>starting from 69$</h2>
+        <h3>Get a free quote in less then 10 seconds</h3>
+        <div class="line"></div>
+
+        <span>SUBTOTAL</span>
+        <div class="price">
+          <img class="usd" src="../../../assets/images/usd.svg" alt="usd" />
+          <span class="price">90</span>
+        </div>
+        <p>
+          If you have any questions, please do not hesitate to contact Customer
+          Service at info&#64;citysquad.com or Call us (310) 343-675
+        </p>
+        <button>Continue</button>
+        <button *ngIf="false">Book</button>
+        <button *ngIf="false" class="back">Go Back</button>
+      </div>
+    </section>
+  </div>
+</section>

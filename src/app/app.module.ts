@@ -19,6 +19,8 @@ import { TagModule } from 'primeng/tag';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProductService } from './service/productservice.service';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { QuoteComponent } from './components/quote/quote.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
     GalleryComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -43,6 +46,7 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
     TagModule,
     CarouselComponent,
     TestimonialsComponent,
+    QuoteComponent,
   ],
   providers: [ProductService],
   bootstrap: [AppComponent],
