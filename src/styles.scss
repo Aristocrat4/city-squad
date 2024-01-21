@@ -174,5 +174,8 @@
     // background: linear-gradient(90deg, #4ef0f8 0%, #44c8f8 41%, #388cfc 100%);
   }
 }
+.hidden {
+  display: none;
+}
 @import "~@ng-select/ng-select/themes/material.theme.css";
 /* Importing Bootstrap SCSS file. */

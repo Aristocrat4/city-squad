@@ -16,8 +16,6 @@ import { CarouselModule } from 'primeng/carousel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
-import { CarouselComponent } from './components/carousel/carousel.component';
-import { ProductService } from './service/productservice.service';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { QuoteComponent } from './components/quote/quote.component';
 import { CommonModule } from '@angular/common';
@@ -44,11 +42,10 @@ import { CommonModule } from '@angular/common';
     BrowserAnimationsModule,
     ButtonModule,
     TagModule,
-    CarouselComponent,
     TestimonialsComponent,
     QuoteComponent,
   ],
-  providers: [ProductService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -4,7 +4,7 @@ section {
     display: flex;
     .left-forms-wrapper {
       overflow-y: scroll;
-      height: 100vh;
+      max-height: calc(100vh - 120px);
       min-width: 60%;
       padding: 3.4375rem 6.25rem;
       background-color: rgba(252, 252, 254, 1);
@@ -99,6 +99,7 @@ section {
       background: rgba(0, 0, 62, 1);
       color: rgba(255, 255, 255, 1);
       width: 100%;
+      // height: calc(100vh - 120px);
       h2 {
         font-weight: 500;
         font-size: 3rem;
