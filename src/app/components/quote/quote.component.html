@@ -2,100 +2,121 @@
   <div class="price-page-wrapper">
     <div class="left-forms-wrapper">
       <div class="left-forms">
-        <form [formGroup]="tvForm">
-          <div class="form-title">
-            <div class="checkbox-title">
-              <div class="checkbox">
-                <div class="circle"></div>
+        <form [formGroup]="tvFormTest">
+          <div class="formarrayname" formArrayName="tvs">
+            <div
+              class="ngfordiv"
+              *ngFor="let tv of tvsList.controls; let i = index"
+            >
+              <div class="formgroupnamediv" [formGroupName]="i">
+                <div class="form-title">
+                  <div class="checkbox-title">
+                    <div class="checkbox">
+                      <div class="circle"></div>
+                    </div>
+                    <span>#{{ i + 1 }} TV</span>
+                  </div>
+                  <span
+                    *ngIf="!tv.get('active')?.value"
+                    class="edit"
+                    (click)="onEdit(tv.value, i)"
+                    >Edit</span
+                  >
+                </div>
+                <div *ngIf="tv.get('active')?.value" class="labels">
+                  <label>
+                    Please select size of your TV
+                    <select formControlName="size">
+                      <option value="small" selected>small</option>
+                      <option value="medium">medium</option>
+                      <option value="big">big</option>
+                    </select>
+                  </label>
+                  <label>
+                    What type of mount do you want to purchase?
+                    <select formControlName="mountType">
+                      <option value="small" selected>small</option>
+                      <option value="medium">medium</option>
+                      <option value="big">big</option>
+                    </select>
+                  </label>
+                  <label>
+                    Where would you like to hide wires?
+                    <select formControlName="whereToHideWires">
+                      <option value="small" selected>small</option>
+                      <option value="medium">medium</option>
+                      <option value="big">big</option>
+                    </select>
+                  </label>
+                  <label>
+                    Would you like to mount sound-bar?
+                    <select formControlName="soundBar">
+                      <option value="small" selected>small</option>
+                      <option value="medium">medium</option>
+                      <option value="big">big</option>
+                    </select>
+                  </label>
+                  <label>
+                    Would you like to mount TV shelves?
+                    <select formControlName="shelves">
+                      <option value="small" selected>small</option>
+                      <option value="medium">medium</option>
+                      <option value="big">big</option>
+                    </select>
+                  </label>
+                  <label>
+                    Would you like to mount electric fireplace?
+                    <select formControlName="fireplace">
+                      <option value="small" selected>small</option>
+                      <option value="medium">medium</option>
+                      <option value="big">big</option>
+                    </select>
+                  </label>
+                  <label>
+                    Would you like to install LED lights on the back of the TV?
+                    <select formControlName="led">
+                      <option value="small" selected>small</option>
+                      <option value="medium">medium</option>
+                      <option value="big">big</option>
+                    </select>
+                  </label>
+                  <label>
+                    Choose a date of service
+                    <select formControlName="date">
+                      <option value="small" selected>small</option>
+                      <option value="medium">medium</option>
+                      <option value="big">big</option>
+                    </select>
+                  </label>
+                  <label>
+                    Comment
+                    <textarea
+                      name="comment"
+                      id="comment"
+                      cols="30"
+                      rows="5"
+                      formControlName="comment"
+                    ></textarea>
+                  </label>
+                  <button (click)="onSave(tv.value, i)" class="save">
+                    Save
+                  </button>
+                </div>
               </div>
-              <span>#1 TV</span>
             </div>
-            <span class="edit" (click)="onEdit()">Edit</span>
-          </div>
-          <div *ngIf="true" class="labels">
-            <label>
-              Please select size of your TV
-              <select formControlName="size">
-                <option value="small" selected>small</option>
-                <option value="medium">medium</option>
-                <option value="big">big</option>
-              </select>
-            </label>
-            <label>
-              What type of mount do you want to purchase?
-              <select formControlName="mountType">
-                <option value="small" selected>small</option>
-                <option value="medium">medium</option>
-                <option value="big">big</option>
-              </select>
-            </label>
-            <label>
-              Where would you like to hide wires?
-              <select formControlName="whereToHideWires">
-                <option value="small" selected>small</option>
-                <option value="medium">medium</option>
-                <option value="big">big</option>
-              </select>
-            </label>
-            <label>
-              Would you like to mount sound-bar?
-              <select formControlName="soundBar">
-                <option value="small" selected>small</option>
-                <option value="medium">medium</option>
-                <option value="big">big</option>
-              </select>
-            </label>
-            <label>
-              Would you like to mount TV shelves?
-              <select formControlName="shelves">
-                <option value="small" selected>small</option>
-                <option value="medium">medium</option>
-                <option value="big">big</option>
-              </select>
-            </label>
-            <label>
-              Would you like to mount electric fireplace?
-              <select formControlName="fireplace">
-                <option value="small" selected>small</option>
-                <option value="medium">medium</option>
-                <option value="big">big</option>
-              </select>
-            </label>
-            <label>
-              Would you like to install LED lights on the back of the TV?
-              <select formControlName="led">
-                <option value="small" selected>small</option>
-                <option value="medium">medium</option>
-                <option value="big">big</option>
-              </select>
-            </label>
-            <label>
-              Choose a date of service
-              <select formControlName="date">
-                <option value="small" selected>small</option>
-                <option value="medium">medium</option>
-                <option value="big">big</option>
-              </select>
-            </label>
-            <label>
-              Comment
-              <textarea
-                name="comment"
-                id="comment"
-                cols="30"
-                rows="5"
-                formControlName="comment"
-              ></textarea>
-            </label>
           </div>
         </form>
-        <div class="add-tv" (click)="onAddAnother()">
+        <div
+          *ngIf="tvsList.controls.length < 5"
+          class="add-tv"
+          (click)="onAddAnother()"
+        >
           <div class="checkbox">
             <div class="circle"></div>
           </div>
           <span>Add another TV</span>
         </div>
-        <div class="disclaimer" *ngIf="isWarningTextVisible">
+        <div class="disclaimer" *ngIf="tvsList.controls.length >= 5">
           <p>
             If you want to add more TVs you should call us (310) 343-675 and get
             special price.
@@ -149,7 +170,7 @@
         <span>SUBTOTAL</span>
         <div class="price">
           <img class="usd" src="../../../assets/images/usd.svg" alt="usd" />
-          <span class="price">90</span>
+          <span class="price">{{ totalPrice }}</span>
         </div>
         <p>
           If you have any questions, please do not hesitate to contact Customer
