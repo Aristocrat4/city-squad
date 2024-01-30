@@ -10,7 +10,9 @@
     #f8f8fc 62.42%,
     rgba(248, 248, 252, 0) 98.75%
   );
-
+  @media only screen and (max-width: 48.4375rem) {
+    display: none;
+  }
   h3 {
     font-weight: 700;
     font-size: 2.5rem;

@@ -1,6 +1,9 @@
 .gallery {
   background: rgba(255, 255, 255, 1);
   padding: 5rem 0;
+  @media only screen and (max-width: 48.4375rem) {
+    display: none;
+  }
   .gallery-wrapper {
     display: flex;
     justify-content: space-between;

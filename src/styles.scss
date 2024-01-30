@@ -155,6 +155,11 @@
   max-width: 1500px;
   width: 97%;
   margin: 0 auto;
+  @media only screen and (max-width: 48.4375rem) {
+    max-width: 775px;
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 .checkbox {
   position: relative;
@@ -179,3 +184,12 @@
 }
 @import "~@ng-select/ng-select/themes/material.theme.css";
 /* Importing Bootstrap SCSS file. */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

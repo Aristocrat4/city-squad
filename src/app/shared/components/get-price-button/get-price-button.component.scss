@@ -1,6 +1,9 @@
 button {
   color: #00003e;
   padding: 12px 30px;
+  @media only screen and (max-width: 48.4375rem) {
+    padding: 0.75rem 1.25rem;
+  }
   background: linear-gradient(
     95.44deg,
     #4ef0f8 0%,

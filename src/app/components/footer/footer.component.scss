@@ -6,6 +6,9 @@ footer {
     .footer-wrapper {
       display: flex;
       justify-content: space-between;
+      @media only screen and (max-width: 48.4375rem) {
+        flex-direction: column;
+      }
       .logo-socials {
         display: flex;
         flex-direction: column;

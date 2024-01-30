@@ -19,6 +19,7 @@ import { TagModule } from 'primeng/tag';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { QuoteComponent } from './components/quote/quote.component';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CommonModule } from '@angular/common';
     GalleryComponent,
   ],
   imports: [
+    MatIconModule,
     CommonModule,
     BrowserModule,
     AppRoutingModule,
