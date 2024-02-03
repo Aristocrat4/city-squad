@@ -26,4 +26,6 @@ export class GalleryComponent {
     const wrapper: HTMLElement = this.scroll.nativeElement;
     wrapper.scrollBy({ left: -300, top: 0, behavior: 'smooth' });
   }
+  nextMobile() {}
+  prevMobile() {}
 }

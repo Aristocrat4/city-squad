@@ -29,5 +29,20 @@
         </div>
       </div>
     </div>
+    <div *ngIf="gallery" class="gallery-right-mobile">
+      <img
+        class="img-main"
+        src="{{ '../../../assets/images/' + gallery[0].img }}"
+        alt=""
+      />
+      <div class="buttons-mobile">
+        <div class="arrow left-arrow" (click)="prevMobile()" #prevBtn>
+          <img src="../../../assets/images/left.svg" alt="left arrow" />
+        </div>
+        <div class="arrow right-arrow" (click)="nextMobile()" #nextBtn>
+          <img src="../../../assets/images/right.svg" alt="right arrow" />
+        </div>
+      </div>
+    </div>
   </div>
 </section>
