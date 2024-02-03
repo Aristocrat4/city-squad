@@ -8,11 +8,17 @@ footer {
       justify-content: space-between;
       @media only screen and (max-width: 48.4375rem) {
         flex-direction: column;
+        justify-content: center;
       }
       .logo-socials {
         display: flex;
         flex-direction: column;
         gap: 10px;
+        @media only screen and (max-width: 48.4375rem) {
+          align-items: center;
+          gap: 0.3125rem;
+          justify-content: center;
+        }
         .logo {
           width: 265px;
         }
@@ -20,6 +26,9 @@ footer {
           // background-color: wheat;
           display: flex;
           gap: 15px;
+          @media only screen and (max-width: 48.4375rem) {
+            align-items: center;
+          }
           .circle {
             width: 28px;
             height: 28px;
@@ -29,17 +38,38 @@ footer {
             justify-content: center;
             align-items: center;
             margin-top: 30px;
+            @media only screen and (max-width: 48.4375rem) {
+              margin-top: 0.9375rem;
+            }
             cursor: pointer;
           }
         }
       }
+      .working-hours {
+        @media only screen and (max-width: 48.4375rem) {
+          margin-top: 1.5625rem;
+          margin-bottom: 0.625rem;
+        }
+      }
       .column {
+        @media only screen and (max-width: 48.4375rem) {
+          align-items: center;
+          justify-content: center;
+        }
         h2 {
+          @media only screen and (max-width: 48.4375rem) {
+            text-align: center;
+            margin-top: 0.9375rem;
+          }
           font-weight: 600;
           font-size: 16px;
           margin-bottom: 30px;
         }
         ul {
+          @media only screen and (max-width: 48.4375rem) {
+            text-align: center;
+            margin-top: 0.9375rem;
+          }
           display: flex;
           flex-direction: column;
           gap: 15px;
@@ -71,6 +101,11 @@ footer {
     .container {
       display: flex;
       justify-content: space-between;
+      @media only screen and (max-width: 48.4375rem) {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.625rem;
+      }
       .footer-black-right {
         display: flex;
         align-items: center;
