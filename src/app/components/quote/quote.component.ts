@@ -75,14 +75,13 @@ export class QuoteComponent {
           control.get('active')?.setValue(false);
         }
       });
+      this.tvPrices.forEach((price) => {
+        totalTvPrices += price;
+      });
+      newTvPrice = this.totalPrice - totalTvPrices;
+      this.tvPrices.push(newTvPrice);
     }
-    this.tvPrices.forEach((price) => {
-      totalTvPrices += price;
-    });
 
-    newTvPrice = this.totalPrice - totalTvPrices;
-
-    this.tvPrices.push(newTvPrice);
     totalTvPrices = 0;
     newTvPrice = 0;
     console.log(this.tvPrices);
