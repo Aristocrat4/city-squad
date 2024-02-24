@@ -31,57 +31,54 @@
                   <label>
                     Please select size of your TV
                     <select formControlName="size">
-                      <option value="small" selected>small</option>
-                      <option value="medium">medium</option>
-                      <option value="big">big</option>
+                      <option value="sm">24″-43″</option>
+                      <option value="md">44″-55″</option>
+                      <option value="lg">56″-75″</option>
+                      <option value="xl">75″+</option>
                     </select>
                   </label>
                   <label>
                     What type of mount do you want to purchase?
                     <select formControlName="mountType">
-                      <option value="small" selected>small</option>
-                      <option value="medium">medium</option>
-                      <option value="big">big</option>
+                      <option value="no" selected>I have mine</option>
+                      <option value="flattilt">Flat and Tilt</option>
+                      <option value="full">Full Motion</option>
                     </select>
                   </label>
                   <label>
                     Where would you like to hide wires?
                     <select formControlName="whereToHideWires">
-                      <option value="small" selected>small</option>
-                      <option value="medium">medium</option>
-                      <option value="big">big</option>
+                      <option value="inside" selected>Inside the wall</option>
+                      <option value="outside">Outside the wall</option>
+                      <option value="notsure">Not sure</option>
                     </select>
                   </label>
                   <label>
                     Would you like to mount sound-bar?
                     <select formControlName="soundBar">
-                      <option value="small" selected>small</option>
-                      <option value="medium">medium</option>
-                      <option value="big">big</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
                     </select>
                   </label>
                   <label>
                     Would you like to mount TV shelves?
                     <select formControlName="shelves">
-                      <option value="small" selected>small</option>
-                      <option value="medium">medium</option>
-                      <option value="big">big</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
                     </select>
                   </label>
                   <label>
                     Would you like to mount electric fireplace?
                     <select formControlName="fireplace">
-                      <option value="small" selected>small</option>
-                      <option value="medium">medium</option>
-                      <option value="big">big</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
                     </select>
                   </label>
                   <label>
                     Would you like to install LED lights on the back of the TV?
                     <select formControlName="led">
-                      <option value="small" selected>small</option>
-                      <option value="medium">medium</option>
-                      <option value="big">big</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
                     </select>
                   </label>
                   <label>
@@ -102,8 +99,8 @@
                       formControlName="comment"
                     ></textarea>
                   </label>
-                  <button (click)="onSave(tv.value, i)" class="save">
-                    Save
+                  <button (click)="onCalculate(tv.value, i)" class="save">
+                    Calculate
                   </button>
                 </div>
               </div>

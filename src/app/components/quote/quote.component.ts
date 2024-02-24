@@ -49,19 +49,17 @@ export class QuoteComponent {
   onEdit(tv: any, i: number) {
     const tvs = this.tvFormTest.get('tvs') as FormArray;
     tvs.controls.forEach((control, index) => {
-      console.log(index, i, 'index');
       if (i === index) {
         control.get('active')?.setValue(true);
       }
     });
-    console.log(tv, 'edit');
   }
-  onSave(tv: any, i: number) {
+  onCalculate(tv: any, i: number) {
     const tvs = this.tvFormTest.get('tvs') as FormArray;
     tvs.controls.forEach((control, index) => {
-      console.log(index, i, 'index');
-      if (i === index) {
+      if (i === index && control.valid) {
         control.get('active')?.setValue(false);
+        this.calculateTotalPrice(this.tvsList.value);
       }
     });
     if (this.tvFormTest.valid && i < 4) {
@@ -75,6 +73,49 @@ export class QuoteComponent {
         }
       });
     }
+  }
+  calculateTotalPrice(tvArray: TV[]) {
+    this.totalPrice = 0;
+    tvArray.forEach((tv) => {
+      if (tv.size === 'sm') {
+        this.totalPrice += 69;
+        if (tv.mountType === 'flattilt') {
+          this.totalPrice += 29;
+        } else if (tv.mountType === 'full') {
+          this.totalPrice += 39;
+        }
+      } else if (tv.size === 'md') {
+        this.totalPrice += 79;
+        if (tv.mountType === 'flattilt') {
+          this.totalPrice += 34;
+        } else if (tv.mountType === 'full') {
+          this.totalPrice += 49;
+        }
+      } else if (tv.size === 'lg') {
+        this.totalPrice += 90;
+        if (tv.mountType === 'flattilt') {
+          this.totalPrice += 39;
+        } else if (tv.mountType === 'full') {
+          this.totalPrice += 59;
+        }
+      } else if (tv.size === 'xl') {
+        this.totalPrice += 119;
+        if (tv.mountType === 'flattilt') {
+          this.totalPrice += 59;
+        } else if (tv.mountType === 'full') {
+          this.totalPrice += 99;
+        }
+      }
+      if (tv.whereToHideWires === 'inside') {
+        this.totalPrice += 59;
+      } else if (tv.whereToHideWires === 'outside') {
+        this.totalPrice += 29;
+      }
+      tv.soundBar === 'yes' ? (this.totalPrice += 39) : (this.totalPrice += 0);
+      tv.shelves === 'yes' ? (this.totalPrice += 39) : (this.totalPrice += 0);
+      tv.fireplace === 'yes' ? (this.totalPrice += 69) : (this.totalPrice += 0);
+      tv.led === 'yes' ? (this.totalPrice += 29) : (this.totalPrice += 0);
+    });
   }
   onAddAnother() {
     if (this.tvFormTest.valid) {
