@@ -80,6 +80,11 @@ export class QuoteComponent {
       });
       newTvPrice = this.totalPrice - totalTvPrices;
       this.tvPrices.push(newTvPrice);
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
     }
 
     totalTvPrices = 0;
