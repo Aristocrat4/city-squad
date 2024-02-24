@@ -68,7 +68,7 @@ export class QuoteComponent {
     if (this.tvFormTest.valid && i < 4) {
       const newTv = this.createEmptyTv(true);
       const tvs = this.tvFormTest.get('tvs') as FormArray;
-      tvs.push(newTv);
+      // tvs.push(newTv);
 
       tvs.controls.forEach((control) => {
         if (control !== newTv) {
