@@ -1,6 +1,10 @@
 <section class="container">
   <div class="price-page-wrapper">
     <div class="left-forms-wrapper">
+      <div class="title">
+        <h2>TV mounting starting from 69$</h2>
+        <h4>Get a free quote in less than 10 seconds</h4>
+      </div>
       <div class="left-forms">
         <form [formGroup]="tvFormTest">
           <div class="formarrayname" formArrayName="tvs">
@@ -169,7 +173,16 @@
 
         <span>SUBTOTAL</span>
         <div class="price">
-          <img class="usd" src="../../../assets/images/usd.svg" alt="usd" />
+          <img
+            class="usd usd-lg"
+            src="../../../assets/images/usd.svg"
+            alt="usd"
+          />
+          <img
+            class="usd usd-mob"
+            src="../../../assets/images/usd_black.svg"
+            alt="usd"
+          />
           <span class="price">{{ totalPrice }}</span>
         </div>
         <p>
