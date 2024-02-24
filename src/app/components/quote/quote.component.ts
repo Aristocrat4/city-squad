@@ -65,15 +65,7 @@ export class QuoteComponent {
         this.calculateTotalPrice(this.tvsList.value);
       }
     });
-    if (this.tvFormTest.valid && i < 4) {
-      const newTv = this.createEmptyTv(true);
-      const tvs = this.tvFormTest.get('tvs') as FormArray;
-
-      tvs.controls.forEach((control) => {
-        if (control !== newTv) {
-          control.get('active')?.setValue(false);
-        }
-      });
+    if (this.tvFormTest.valid) {
       this.tvPrices.forEach((price) => {
         totalTvPrices += price;
       });
@@ -84,6 +76,16 @@ export class QuoteComponent {
         left: 0,
         behavior: 'smooth',
       });
+      if (i < 4) {
+        const newTv = this.createEmptyTv(true);
+        const tvs = this.tvFormTest.get('tvs') as FormArray;
+
+        tvs.controls.forEach((control) => {
+          if (control !== newTv) {
+            control.get('active')?.setValue(false);
+          }
+        });
+      }
     }
 
     totalTvPrices = 0;
