@@ -19,6 +19,7 @@
                       <div class="circle"></div>
                     </div>
                     <span>#{{ i + 1 }} TV</span>
+                    <span *ngIf="tvPrices[i]">price - ${{ tvPrices[i] }}</span>
                   </div>
                   <span
                     *ngIf="!tv.get('active')?.value"

@@ -40,6 +40,7 @@ export class QuoteComponent {
   isContactFormVisible!: false;
   tvFormTest!: FormGroup;
   totalPrice: number = 0;
+  tvPrices: number[] = [];
 
   constructor(private el: ElementRef, private fb: FormBuilder) {
     this.tvFormTest = this.fb.group({
@@ -55,6 +56,8 @@ export class QuoteComponent {
     });
   }
   onCalculate(tv: any, i: number) {
+    let newTvPrice = 0;
+    let totalTvPrices = 0;
     const tvs = this.tvFormTest.get('tvs') as FormArray;
     tvs.controls.forEach((control, index) => {
       if (i === index && control.valid) {
@@ -73,6 +76,16 @@ export class QuoteComponent {
         }
       });
     }
+    this.tvPrices.forEach((price) => {
+      totalTvPrices += price;
+    });
+
+    newTvPrice = this.totalPrice - totalTvPrices;
+
+    this.tvPrices.push(newTvPrice);
+    totalTvPrices = 0;
+    newTvPrice = 0;
+    console.log(this.tvPrices);
   }
   calculateTotalPrice(tvArray: TV[]) {
     this.totalPrice = 0;
