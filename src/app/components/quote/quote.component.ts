@@ -41,12 +41,24 @@ export class QuoteComponent {
   tvFormTest!: FormGroup;
   totalPrice: number = 0;
   tvPrices: number[] = [];
+  contactForm: FormGroup;
+  isModalOpen = false;
 
   constructor(private el: ElementRef, private fb: FormBuilder) {
     this.tvFormTest = this.fb.group({
       tvs: this.fb.array([this.createEmptyTv(true)]),
     });
+    this.contactForm = this.fb.group({
+      fullName: ['', Validators.required],
+      phone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      city: ['', Validators.required],
+      address: ['', Validators.required],
+      zipCode: ['', Validators.required],
+    });
   }
+
+  // Edit the specific form
   onEdit(tv: any, i: number) {
     const tvs = this.tvFormTest.get('tvs') as FormArray;
     tvs.controls.forEach((control, index) => {
@@ -55,86 +67,88 @@ export class QuoteComponent {
       }
     });
   }
-  onCalculate(tv: any, i: number) {
-    let newTvPrice = 0;
-    let totalTvPrices = 0;
-    const tvs = this.tvFormTest.get('tvs') as FormArray;
-    tvs.controls.forEach((control, index) => {
-      if (i === index && control.valid) {
-        control.get('active')?.setValue(false);
-        this.calculateTotalPrice(this.tvsList.value);
-      }
-    });
-    if (this.tvFormTest.valid) {
-      this.tvPrices.forEach((price) => {
-        totalTvPrices += price;
-      });
-      newTvPrice = this.totalPrice - totalTvPrices;
-      this.tvPrices.push(newTvPrice);
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      });
-      if (i < 4) {
-        const newTv = this.createEmptyTv(true);
-        const tvs = this.tvFormTest.get('tvs') as FormArray;
 
-        tvs.controls.forEach((control) => {
-          if (control !== newTv) {
-            control.get('active')?.setValue(false);
-          }
-        });
+  // Calculate and update the price for the specific TV
+  onCalculate(tv: any, i: number) {
+    const tvs = this.tvFormTest.get('tvs') as FormArray;
+    let totalTvPrices = 0;
+
+    // Calculate the new price for the edited TV form
+    if (tvs.at(i).valid) {
+      const tvValues = tvs.at(i).value;
+      const newPrice = this.calculateSingleTvPrice(tvValues);
+
+      // Update the price in the array instead of adding a new one
+      this.tvPrices[i] = newPrice;
+
+      // Recalculate total price
+      this.totalPrice = this.tvPrices.reduce((acc, curr) => acc + curr, 0);
+
+      // Close the edit mode for the current form
+      tvs.at(i).get('active')?.setValue(false);
+    }
+
+    console.log(this.tvPrices);
+  }
+
+  // Calculate the total price for a single TV based on the inputs
+  calculateSingleTvPrice(tv: TV): number {
+    let price = 0;
+
+    // Calculation logic for each TV
+    if (tv.size === 'sm') {
+      price = 69;
+      if (tv.mountType === 'flattilt') {
+        price += 29;
+      } else if (tv.mountType === 'full') {
+        price += 39;
+      }
+    } else if (tv.size === 'md') {
+      price = 79;
+      if (tv.mountType === 'flattilt') {
+        price += 34;
+      } else if (tv.mountType === 'full') {
+        price += 49;
+      }
+    } else if (tv.size === 'lg') {
+      price = 90;
+      if (tv.mountType === 'flattilt') {
+        price += 39;
+      } else if (tv.mountType === 'full') {
+        price += 59;
+      }
+    } else if (tv.size === 'xl') {
+      price = 119;
+      if (tv.mountType === 'flattilt') {
+        price += 59;
+      } else if (tv.mountType === 'full') {
+        price += 99;
       }
     }
 
-    totalTvPrices = 0;
-    newTvPrice = 0;
-    console.log(this.tvPrices);
+    if (tv.whereToHideWires === 'inside') {
+      price += 59;
+    } else if (tv.whereToHideWires === 'outside') {
+      price += 29;
+    }
+
+    if (tv.soundBar === 'yes') {
+      price += 39;
+    }
+    if (tv.shelves === 'yes') {
+      price += 39;
+    }
+    if (tv.fireplace === 'yes') {
+      price += 69;
+    }
+    if (tv.led === 'yes') {
+      price += 29;
+    }
+
+    return price;
   }
-  calculateTotalPrice(tvArray: TV[]) {
-    this.totalPrice = 0;
-    tvArray.forEach((tv) => {
-      if (tv.size === 'sm') {
-        this.totalPrice += 69;
-        if (tv.mountType === 'flattilt') {
-          this.totalPrice += 29;
-        } else if (tv.mountType === 'full') {
-          this.totalPrice += 39;
-        }
-      } else if (tv.size === 'md') {
-        this.totalPrice += 79;
-        if (tv.mountType === 'flattilt') {
-          this.totalPrice += 34;
-        } else if (tv.mountType === 'full') {
-          this.totalPrice += 49;
-        }
-      } else if (tv.size === 'lg') {
-        this.totalPrice += 90;
-        if (tv.mountType === 'flattilt') {
-          this.totalPrice += 39;
-        } else if (tv.mountType === 'full') {
-          this.totalPrice += 59;
-        }
-      } else if (tv.size === 'xl') {
-        this.totalPrice += 119;
-        if (tv.mountType === 'flattilt') {
-          this.totalPrice += 59;
-        } else if (tv.mountType === 'full') {
-          this.totalPrice += 99;
-        }
-      }
-      if (tv.whereToHideWires === 'inside') {
-        this.totalPrice += 59;
-      } else if (tv.whereToHideWires === 'outside') {
-        this.totalPrice += 29;
-      }
-      tv.soundBar === 'yes' ? (this.totalPrice += 39) : (this.totalPrice += 0);
-      tv.shelves === 'yes' ? (this.totalPrice += 39) : (this.totalPrice += 0);
-      tv.fireplace === 'yes' ? (this.totalPrice += 69) : (this.totalPrice += 0);
-      tv.led === 'yes' ? (this.totalPrice += 29) : (this.totalPrice += 0);
-    });
-  }
+
+  // Add a new TV form
   onAddAnother() {
     if (this.tvFormTest.valid) {
       const newTv = this.createEmptyTv(true);
@@ -146,11 +160,15 @@ export class QuoteComponent {
           control.get('active')?.setValue(false);
         }
       });
+
+      this.tvPrices.push(0); // Add a new price for the newly added TV form
     }
   }
+
   get tvsList(): FormArray {
     return this.tvFormTest.get('tvs') as FormArray;
   }
+
   createEmptyTv(active: boolean): FormGroup {
     return this.fb.group({
       size: ['', Validators.required],
@@ -164,5 +182,33 @@ export class QuoteComponent {
       comment: [''],
       active: active,
     });
+  }
+  removeTvForm(index: number) {
+    const tvs = this.tvFormTest.get('tvs') as FormArray;
+    tvs.removeAt(index);
+    this.tvPrices.splice(index, 1); // Remove the corresponding price
+
+    // If no forms left, add an empty form
+    if (tvs.length === 0) {
+      this.onAddAnother();
+    }
+
+    // Recalculate total price
+    this.totalPrice = this.tvPrices.reduce((acc, curr) => acc + curr, 0);
+  }
+  openModal() {
+    console.log('eee');
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  onSubmit() {
+    if (this.contactForm.valid) {
+      console.log('Contact Info:', this.contactForm.value);
+      this.closeModal();
+    }
   }
 }
