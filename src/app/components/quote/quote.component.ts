@@ -11,6 +11,8 @@ import {
 } from '@angular/forms';
 import { SelectComponent } from '../select/select.component';
 import { CommonModule } from '@angular/common';
+import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
+
 interface TV {
   size?: string | null | undefined;
   mountType?: string | null | undefined;
@@ -205,10 +207,72 @@ export class QuoteComponent {
     this.isModalOpen = false;
   }
 
-  onSubmit() {
-    if (this.contactForm.valid) {
-      console.log('Contact Info:', this.contactForm.value);
-      this.closeModal();
+  onSubmit(e: Event) {
+    e.preventDefault();
+
+    if (this.contactForm.valid && this.tvFormTest.valid) {
+      // Extract contact form data
+      const contactData = this.contactForm.value;
+
+      // Extract TV form data
+      const tvData = this.tvsList.value;
+
+      // Format TV details into a structured string
+      const tvsDetails = tvData
+        .map((tv: any, index: number) => {
+          return `
+          TV #${index + 1}:
+          - Size: ${tv.size || 'N/A'}
+          - Mount Type: ${tv.mountType || 'N/A'}
+          - Wires Hidden: ${tv.whereToHideWires || 'N/A'}
+          - Sound Bar: ${tv.soundBar || 'N/A'}
+          - Shelves: ${tv.shelves || 'N/A'}
+          - Fireplace: ${tv.fireplace || 'N/A'}
+          - LED: ${tv.led || 'N/A'}
+          - Date: ${tv.date || 'N/A'}
+          - Comment: ${tv.comment || 'N/A'}
+          `;
+        })
+        .join('\n');
+
+      const templateParams = {
+        to_name: 'CitySquad Team', // The name of the recipient (fixed)
+        from_name: contactData.fullName, // Sender's name
+        fullName: contactData.fullName, // Full name of the customer
+        phone: contactData.phone, // Phone number
+        email: contactData.email, // Email address
+        city: contactData.city, // City
+        address: contactData.address, // Address
+        zipCode: contactData.zipCode, // Zip code
+        tvsDetails, // TV details as formatted string
+        totalPrice: this.totalPrice, // Total price
+      };
+
+      // Send email through EmailJS
+      emailjs
+        .send(
+          'service_4lnu17v', // Replace with your EmailJS service ID
+          'template_myx7i6m', // Replace with your EmailJS template ID
+          templateParams, // Parameters to send
+          'n6f9HrvWskC0mApeH' // Replace with your EmailJS public key
+        )
+        .then(
+          (response) => {
+            console.log(
+              'Email sent successfully!',
+              response.status,
+              response.text
+            );
+            alert('Order details sent successfully!');
+            this.closeModal();
+          },
+          (error) => {
+            console.error('Failed to send email:', error);
+            alert('Failed to send email. Please try again.');
+          }
+        );
+    } else {
+      alert('Please complete the forms correctly before submitting.');
     }
   }
 }

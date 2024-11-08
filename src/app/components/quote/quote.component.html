@@ -199,7 +199,7 @@
   <div class="modal-content">
     <span class="close" (click)="closeModal()">&times;</span>
     <h2>Contact Information</h2>
-    <form [formGroup]="contactForm">
+    <form [formGroup]="contactForm" (submit)="onSubmit($event)">
       <label>
         <span> Full Name: </span>
         <input formControlName="fullName" />
@@ -225,7 +225,8 @@
         <input formControlName="zipCode" />
       </label>
       <div class="buttons-div">
-        <button (click)="onSubmit()">Submit</button>
+        <input type="submit" value="Submit" />
+        <!-- <button (click)="onSubmit()">Submit</button> -->
         <button (click)="closeModal()">Cancel</button>
       </div>
     </form>
