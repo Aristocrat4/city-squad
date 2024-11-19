@@ -18,4 +18,7 @@ export class HeaderComponent {
   onLogo() {
     this.route.navigate(['']);
   }
+  callNumber(): void {
+    window.location.href = 'tel:9297221167';
+  }
 }
